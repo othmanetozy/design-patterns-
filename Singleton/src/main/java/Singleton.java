@@ -7,8 +7,10 @@ public class Singleton {
         this.Data=data;
     }
     private static Singleton getInstance(String data){
-        if (instance == null){
-          instance = new Singleton(data);
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                instance = new Singleton(data);
+            }
         }
         return instance;
     }
